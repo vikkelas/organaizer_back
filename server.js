@@ -17,10 +17,9 @@ app.use(koaBody({
    json: true,
 }));
 
-router.post('/upload', (ctx) => {
-   upload.uploadFile(ctx);
-   ctx.request.files.file[0].id
-
+router.post('/upload', async (ctx) => {
+   const response = await upload.uploadFile(ctx);
+   ctx.response.body = response;
 });
 
 
